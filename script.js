@@ -1,4 +1,4 @@
-const currenyEl_one = document.getElementById('currency-one');
+const currencyEl_one = document.getElementById('currency-one');
 const currencyEl_two = document.getElementById('currency-two');
 const amountEl_one = document.getElementById('amount-one');
 const amountEl_two = document.getElementById('amount-two');
@@ -8,7 +8,7 @@ const swap = document.getElementById('swap');
 
 //Fetch exchange rates and update DOM
 function calculate(){
-  const currency_one = currenyEl_one.value;
+  const currency_one = currencyEl_one.value;
   const currency_two = currencyEl_two.value;
 
   fetch(`https://api.exchangerate-api.com/v4/latest/${currency_one}`)
@@ -26,15 +26,16 @@ function calculate(){
 }
 
 //event listeners
-currenyEl_one.addEventListener('change', calculate);
+currencyEl_one.addEventListener('change', calculate);
 currencyEl_two.addEventListener('change', calculate);
 amountEl_one.addEventListener('input', calculate);
 amountEl_two.addEventListener('input', calculate);
 swap.addEventListener('click', () =>{
-  const temp = currenyEl_one.value;
+  console.log('clonk')
+  const temp = currencyEl_one.value;
   currencyEl_one.value = currencyEl_two.value;
   currencyEl_two.value = temp;
   calculate();
-})
+});
 
 calculate();
